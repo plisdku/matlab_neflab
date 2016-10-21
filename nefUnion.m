@@ -11,6 +11,16 @@ function [vertices, faces] = nefUnion(v1, f1, v2, f2)
 %detectSingularFaces(v1,f1);
 %editdetectSingularFaces(v2,f2);
 
+if size(f1,1) == 0
+    vertices = v2;
+    faces = f2;
+    return
+elseif size(f2,1) == 0
+    vertices = v1;
+    faces = f1;
+    return
+end
+
 inFile = [tempdir sprintf('nefTemp%1.4f.txt', now)];
 outFile = [tempdir sprintf('nefOut%1.4f.txt', now)];
 

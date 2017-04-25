@@ -22,9 +22,9 @@ for i1 = 1:length(shells1)
         shellFaces1 = shells1{i1};
         shellFaces2 = shells2{i2};
         
-        if boundsEncloses(shellFaces1, v1, shellFaces2, v2)
+        if neflab.boundsEncloses(shellFaces1, v1, shellFaces2, v2)
             containment12(i1,i2) = 1;
-        elseif boundsEncloses(shellFaces2, v2, shellFaces1, v1)
+        elseif neflab.boundsEncloses(shellFaces2, v2, shellFaces1, v1)
             containment21(i2,i1) = 1;
         end
     end
@@ -43,7 +43,7 @@ keptShells2 = cat(1, shells2{iKeepShell2});
 faces = [keptShells1; v2_offset + keptShells2];
 vertices = [v1; v2];
 
-[vertices, faces] = reduceVertices(vertices, faces);
+[vertices, faces] = neflab.reduceVertices(vertices, faces);
 
 
 %, 2, 4, 6 etc. of the other poly's shells is

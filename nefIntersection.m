@@ -3,11 +3,11 @@ function [vertices, faces] = nefIntersection(v1, f1, v2, f2)
 %
 % [vertices faces] = nefIntersection(v1, f1, v2, f2)
 %
-
+    
     % Write args to file
     % Call NefLab
     % Get polyhedron back out
-
+    
     if neflab.disjointHulls(v1, v2)
         vertices = [];
         faces = [];

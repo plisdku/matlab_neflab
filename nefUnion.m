@@ -11,7 +11,15 @@ function [vertices, faces] = nefUnion(v1, f1, v2, f2)
 %detectSingularFaces(v1,f1);
 %editdetectSingularFaces(v2,f2);
 
-if neflab.nefTestBoundaryIntersection(v1, f1, v2, f2) == 0
+if size(f1,1) == 0
+    vertices = v2;
+    faces = f2;
+    return
+elseif size(f2,1) == 0
+    vertices = v1;
+    faces = f1;
+    return
+elseif neflab.nefTestBoundaryIntersection(v1, f1, v2, f2) == 0
     [vertices, faces] = neflab.easyUnion(v1, f1, v2, f2);
     return
 end

@@ -11,6 +11,11 @@ function [vertices, faces] = nefUnion(v1, f1, v2, f2)
 %detectSingularFaces(v1,f1);
 %editdetectSingularFaces(v2,f2);
 
+if neflab.nefTestBoundaryIntersection(v1, f1, v2, f2) == 0
+    [vertices, faces] = neflab.easyUnion(v1, f1, v2, f2);
+    return
+end
+
 inFile = [tempdir sprintf('nefTemp%1.4f.txt', now)];
 outFile = [tempdir sprintf('nefOut%1.4f.txt', now)];
 

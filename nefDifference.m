@@ -14,6 +14,13 @@ if neflab.disjointHulls(v1, v2)
     return;
 end
 
+if neflab.nefTestBoundaryIntersection(v1, f1, v2, f2) == 0
+    [vertices, faces] = neflab.easyDifference(v1, f1, v2, f2);
+    return
+end
+
+
+
 inFile = [tempdir sprintf('nefTemp%1.7f.txt', now)];
 outFile = [tempdir sprintf('nefOut%1.7f.txt', now)];
 

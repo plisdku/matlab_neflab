@@ -1,4 +1,4 @@
-function [vertices faces] = nefIntersection(v1, f1, v2, f2)
+function [vertices, faces] = nefIntersection(v1, f1, v2, f2)
 % nefIntersection    Calculate intersection of two polyhedra
 %
 % [vertices faces] = nefIntersection(v1, f1, v2, f2)
@@ -12,6 +12,11 @@ function [vertices faces] = nefIntersection(v1, f1, v2, f2)
         vertices = [];
         faces = [];
         return;
+    end
+    
+    if neflab.nefTestBoundaryIntersection(v1, f1, v2, f2) == 0
+        [vertices, faces] = neflab.easyIntersection(v1, f1, v2, f2);
+        return
     end
 
 

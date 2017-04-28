@@ -38,10 +38,10 @@ v2_offset = length(v1);
 
 % Any shell of P1 contained inside P2 must be discarded.
 % Any shell of P1 not contained inside P2 is kept of course.
-iKeepShell1 = find(mod(sum(containment21),2) == 0);
+iKeepShell1 = find(mod(sum(containment21,1),2) == 0);
 
 % Any shell of P2 contained inside P1 must be kept, but reversed.
-iKeepShell2 = find(mod(sum(containment12),2) == 1);
+iKeepShell2 = find(mod(sum(containment12,1),2) == 1);
 
 keptShells1 = cat(1, shells1{iKeepShell1});
 keptShells2 = fliplr(cat(1, shells2{iKeepShell2})); % REVERSED!!

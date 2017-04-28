@@ -34,8 +34,8 @@ end
 
 v2_offset = length(v1);
 
-iKeepShell1 = find(mod(sum(containment21),2) == 0);
-iKeepShell2 = find(mod(sum(containment12),2) == 0);
+iKeepShell1 = find(mod(sum(containment21,1),2) == 0);
+iKeepShell2 = find(mod(sum(containment12,1),2) == 0);
 
 keptShells1 = cat(1, shells1{iKeepShell1});
 keptShells2 = cat(1, shells2{iKeepShell2});
